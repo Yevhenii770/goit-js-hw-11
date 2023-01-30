@@ -5,7 +5,7 @@
   "homepage": "https://Yevhenii770.github.io/goit-js-hw-11",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-10/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
   },
   "repository": {
     "type": "git",
@@ -18,20 +18,22 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
-    "axios": "^1.2.1",
-    "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1",
+    "axios": "^1.2.6",
+    "handlebars": "^4.7.7",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
-    "simplelightbox": "^2.11.0"
+    "parcel-bundler": "^1.12.5",
+    "simplelightbox": "^2.12.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
-    "buffer": "^6.0.3",
+    "buffer": "^5.7.1",
     "parcel": "^2.6.0",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-reporter-clean-dist": "^1.0.4",
     "parcel-transformer-hbs": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "sass": "^1.32.8"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 3 versions, not dead"
 }
