@@ -94,7 +94,10 @@ p {
 .gallery {
   margin-left: -20px;
   padding-top: 60px;
-  justify-content: center;
+
+  @media screen and (min-width: 1200px) and (max-wdth: 1439px) {
+    justify-content: center;
+  }
 }
 
 .gallery__link {
