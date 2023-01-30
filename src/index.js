@@ -20,9 +20,9 @@ const searchPhotoApi = new SearchPhotoApiService();
 refs.searchForm.addEventListener('submit', onSearch)
 refs.btnMore.addEventListener('click', onLoadMore)
 
-let lightBox = new SimpleLightbox('.gallery a', {
-  captionDelay: 250,
-});
+// let lightBox = new SimpleLightbox('.gallery a', {
+//   captionDelay: 250,
+// });
 
 
 function onSearch(e) {
