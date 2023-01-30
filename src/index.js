@@ -1,4 +1,4 @@
-import './sass/_main.scss';
+// import './sass/_main.scss';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
