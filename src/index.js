@@ -40,28 +40,34 @@ function onSearch(e) {
 }
 
 
-function onLoadMore() {
+async function onLoadMore() {
   page += 1;
+  let newdata = ''
+
+  try {
+    const { data } = await fetchImages(query, page, perPage);
+    newdata = data
+  } catch {
+  console.log(Error)
+  }
   
-  fetchImages(query, page, perPage).then(({ data }) => {
-    if (data.hits.length == 0 && !renderGallery) {
+    if (newdata.hits.length == 0 && !renderGallery) {
       Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.');
       return; 
     }
   refs.btnMore.classList.remove('is-hidden');
-  renderGallery(data.hits);
+  renderGallery(newdata.hits);
   simpL.refresh();
     
-  const totalPages = Math.ceil(data.totalHits / perPage);
+  const totalPages = Math.ceil(newdata.totalHits / perPage);
       
     if (page > totalPages) {
       Notify.failure("We're sorry, but you've reached the end of search results.");
       refs.btnMore.classList.add('is-hidden')
     }
-  })
-    .catch(error => console.log(error));
   }
+  
   
 function renderGallery(images) {
   const markup = images
