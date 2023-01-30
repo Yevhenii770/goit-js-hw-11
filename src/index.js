@@ -19,12 +19,10 @@ const searchPhotoApi = new SearchPhotoApiService();
 
 refs.searchForm.addEventListener('submit', onSearch)
 refs.btnMore.addEventListener('click', onLoadMore)
-// refs.gallery.addEventListener('click', onGallaryClick);
 
-
-// function onGallaryClick() {
-//   new SimpleLightbox('.gallery a')
-// }
+let lightBox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+});
 
 
 function onSearch(e) {

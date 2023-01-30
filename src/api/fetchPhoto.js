@@ -1,6 +1,4 @@
 import axios from 'axios'
-
-axios.defaults.baseURL = 'https://pixabay.com/api/';
 const KEY = '33191219-dc41095899386e0adcb39eb2c';
 
 export default class SearchPhotoApiService {
