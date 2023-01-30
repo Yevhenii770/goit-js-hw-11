@@ -21,7 +21,6 @@ let simpL = new SimpleLightbox('.gallery a', {
 })
 
 let query = '';
-console.log(query)
 let page = 1;
 const perPage = 20;
 
@@ -32,15 +31,16 @@ refs.btnMore.addEventListener('click', onLoadMore)
 
 function onSearch(e) {
   e.preventDefault()
-  refs.btnMore.removeAttribute("disabled")
+  
 
-
+  if (!e.target.searchQuery.value.trim()) {
+    Notify.failure('The search string cannot be empty. Please specify your search query.');
+    return;
+  }
+  
   page = 1;
   query = e.currentTarget.searchQuery.value.trim();
-  console.log(e.currentTarget.searchQuery.value.trim())
   clearContainer();
-  refs.btnMore.classList.remove('is-hidden');
-
   onLoadMore()
   e.target.reset()
 }
@@ -53,10 +53,24 @@ function clearContainer() {
 function onLoadMore() {
   page += 1;
   
-  fetchImages(query, page, perPage).then(({ data }) => {renderGallery(data.hits);
-   simpL.refresh();
- });
-  
+  fetchImages(query, page, perPage).then(({ data }) => {
+    if (data.hits.length == 0 && !renderGallery) {
+      Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.');
+      return; 
+    }
+    refs.btnMore.classList.remove('is-hidden');
+    renderGallery(data.hits);
+    simpL.refresh();
+
+      const totalPages = Math.ceil(data.totalHits / perPage);
+
+      if (page > totalPages) {
+        Notify.failure("We're sorry, but you've reached the end of search results.");
+        refs.btnMore.classList.add('is-hidden')
+      }
+    })
+    .catch(error => console.log(error));
 }
 
 function renderGallery(images) {
