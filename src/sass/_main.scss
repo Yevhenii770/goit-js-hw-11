@@ -25,6 +25,7 @@ p {
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: rgb(67, 67, 247);
 }
 
 .search-form {
@@ -47,7 +48,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.5em;
   border: none;
   background-color: rgb(200, 200, 200);
 
@@ -147,8 +147,9 @@ p {
   border: none;
   border-radius: 5px;
   background-color: #fbfbfb;
+  background-color: rgb(67, 67, 247);
 
   font: inherit;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
