@@ -1,7 +1,7 @@
 import './sass/_main.scss';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import './css/styles.css';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchImages } from './api/fetchPhoto.js'
 
@@ -9,9 +9,9 @@ import { fetchImages } from './api/fetchPhoto.js'
 
 
 const refs = {
-  searchForm: document.querySelector('.search-form'),
+  searchForm: document.querySelector('#search-form'),
   container: document.querySelector('.gallery'),
-  btnMore: document.querySelector('.load-more'),
+  btnMore: document.querySelector('.btn-load-more'),
   gallery: document.querySelector('.gallery'),
 }
 
@@ -53,9 +53,7 @@ function clearContainer() {
 function onLoadMore() {
   page += 1;
   
-  fetchImages(query, page, perPage)
-    .then(({ data }) => {
-      renderGallery(data.hits);
+  fetchImages(query, page, perPage).then(({ data }) => {renderGallery(data.hits);
    simpL.refresh();
  });
   
@@ -63,8 +61,7 @@ function onLoadMore() {
 
 function renderGallery(images) {
   const markup = images
-    .map(image => {
-      const { id, largeImageURL, webformatURL, tags, likes, views, comments, downloads } = image;
+    .map(image => {const { id, largeImageURL, webformatURL, tags, likes, views, comments, downloads } = image;
       return `
         <a class="gallery__link" href="${largeImageURL}">
           <div class="gallery-item" id="${id}">
