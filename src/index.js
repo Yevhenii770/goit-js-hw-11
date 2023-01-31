@@ -17,7 +17,7 @@ refs.btnMore.addEventListener('click', onLoadMore)
 
 let query = '';
 let page = 1;
-const perPage = 20;
+const perPage = 40;
 
 let simpL = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
@@ -41,12 +41,13 @@ function onSearch(e) {
 
 
 async function onLoadMore() {
-  page += 1;
+  
   let newdata = ''
 
   try {
     const { data } = await fetchImages(query, page, perPage);
-    newdata = data
+    newdata = data;
+    page += 1;
   } catch {
   console.log(Error)
   }
